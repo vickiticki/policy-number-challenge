@@ -108,7 +108,7 @@ module PolicyOcr
                 #end while i loop
             end
             #put the answer in the answer array
-            all_answers << answer
+            all_answers << answer.to_i
             
             # go to next policy
             # first policy starts at line 1, which is file_data[0]
