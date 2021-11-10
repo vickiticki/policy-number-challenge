@@ -26,7 +26,7 @@ describe PolicyOcr do
     context "given 'sample'" do
       it "makes policies" do
         arr = [
-                123456789, 987654321, 011419908
+                123456789, 987654321, 811715908
               ]
         expect(PolicyOcr.make_numbers('spec/fixtures/tests.txt')).to eq(arr)
       end
