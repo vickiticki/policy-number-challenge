@@ -12,24 +12,25 @@ module PolicyOcr
         # file_data = File.read(policies).split
         file = File.open(policies)
         file_data = file.readlines.map(&:chomp)
+        # return file_data[4]
         file.close
         # self.init(policies)
         # file_data = @file_data
         # file_data = IO.readlines(policies)
         
         all_answers = []
-        #position in string
-        i = 0
         #which string to do
         j = 0
         # look at first line
         # will have to put this in a while loop based on j but figure that out later
         
         while j < file_data.count
+            #position in string
+            i = 0
             answer = ""
             # Look at first “chunk” of 3 characters. 
             # last chunk  is 24..26
-            while i <= 24 do
+            while i < 27 do
                 # First chunk: j = 0, i = 0..2
                 first_line = file_data[j][i..(i+2)]
                 second_line = file_data[j+1][i..(i+2)]
@@ -45,7 +46,7 @@ module PolicyOcr
                         # If chunk is “  |”
                     else
                         # Number is 1. Proceed.
-                        number += "1"
+                        answer += "1"
                     end
                     # If the first line first chunk is “ _ “
                 else
@@ -54,11 +55,11 @@ module PolicyOcr
                     # If chunk is “  |”
                     if second_line == "  |"
                         # Number is 7. Proceed.
-                        number += "7"
+                        answer += "7"
                         # If the chunk is “| |”
                     elsif second_line == "| |"
                         # Number is 0. Proceed.
-                        number += "0"
+                        answer += "0"
                         # If chunk is “ _|”
                     elsif second_line == " _|"
                         # Number is 2 or 3
@@ -66,11 +67,11 @@ module PolicyOcr
                         # If chunk is “|_ “
                         if file_data[j+2][i..(i+2)] == "|_ "
                             # Number is 2. Proceed.
-                            number += "2"
+                            answer += "2"
                             # If chunk is “ _|”
                         else
                             # Number is 3. Proceed.
-                            number += "3"
+                            answer += "3"
                         end
                         # If chunk is “|_|”
                     elsif second_line == "|_|"
@@ -79,11 +80,11 @@ module PolicyOcr
                         # If chunk is “|_|”
                         if third_line ==  "|_|"
                             # Number is 8. Proceed. 
-                            number += "8"
+                            answer += "8"
                             # If chunk is “ _|”
                         else
                             # Number is 9. Proceed.
-                            number += "9"
+                            answer += "9"
                         end
                         # If second line chunk is “|_ “
                     else
@@ -91,11 +92,11 @@ module PolicyOcr
                         # If chunk is “ _|”
                         if third_line ==  " _|"
                             # Number is 5. Proceed.
-                            number += "5"
+                            answer += "5"
                             # If chunk is “|_|”
                         else
                             # Number is 6. Proceed.
-                            number += "6"
+                            answer += "6"
                         end
                     end
                     

@@ -15,9 +15,9 @@ describe PolicyOcr do
         arr = [
                 "000000000", "111111111", "222222222", "333333333",
                 "444444444", "555555555", "666666666", "777777777",
-                "888888888", "999999999"
+                "888888888", "999999999", "123456789"
               ]
-        expect(PolicyOcr.make_numbers(fixture('sample'))).to eq(arr)
+        expect(PolicyOcr.make_numbers('spec/fixtures/sample.txt')).to eq(arr)
       end
     end
   end
