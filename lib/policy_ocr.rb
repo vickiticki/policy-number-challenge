@@ -21,12 +21,12 @@ module PolicyOcr
             first_line = file_data[j][i..(i+2)]
             second_line = file_data[j+1][i..(i+2)]
             third_line = file_data[j+2][i..(i+2)]
-            # If the first chunk is “   ”
-            if file_data[j][i..(i+2)] == "   "
+            # If the first line first chunk is “   ”
+            if first_line == "   "
             # Number is 1 or 4
             # Check 2nd line (same position of chunk)
                 # If chunk is “|_|”
-                if file_data[j+1][(i..i+2)] == "|_|"
+                if second_line == "|_|"
                     # Number is 4. Proceed.
                     answer += "4"
                     # If chunk is “  |”
@@ -34,20 +34,20 @@ module PolicyOcr
                     # Number is 1. Proceed.
                     number += "1"
                 end
-            # If the chunk is “ _ “
+            # If the first line first chunk is “ _ “
             else
             # Number is a 0, 2, 3, 5, 6, 7, 8, or 9
             # Check 2nd line (of that chunk)
                 # If chunk is “  |”
-                if file_data[j+1][i..(i+2)] == "  |"
+                if second_line == "  |"
                 # Number is 7. Proceed.
                     number += "7"
                 # If the chunk is “| |”
-                elsif file_data[j+1][i..(i+2)] == "| |"
+                elsif second_line == "| |"
                     # Number is 0. Proceed.
                     number += "0"
                 # If chunk is “ _|”
-                elsif file_data[j+1][i..(i+2)]
+                elsif second_line == " _|"
                 # Number is 2 or 3
                 # Check third line.
                 # If chunk is “|_ “
@@ -59,12 +59,12 @@ module PolicyOcr
                 # Number is 3. Proceed.
                         number += "3"
                     end
-                    # If chunk is “|_|”
-                elsif file_data[j+1][i..(i+2)] == "|_|"
+                # If chunk is “|_|”
+                elsif second_line == "|_|"
                 # Number is 8 or 9
                 # Check third line.
                 # If chunk is “|_|”
-                    if file_data[j+2][i..(i+2)] ==  "|_|"
+                    if third_line ==  "|_|"
                 # Number is 8. Proceed. 
                         number += "8"
                 # If chunk is “ _|”
@@ -72,11 +72,11 @@ module PolicyOcr
                 # Number is 9. Proceed.
                         number += "9"
                     end
-                    # If chunk is “|_ “
+                # If second line chunk is “|_ “
                 else
                 # Number is 5 or 6
                 # If chunk is “ _|”
-                    if file_data[j+2][i..(i+1)] ==  " _|"
+                    if third_line ==  " _|"
                 # Number is 5. Proceed.
                         number += "5"
                 # If chunk is “|_|”
