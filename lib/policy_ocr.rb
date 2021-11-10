@@ -1,7 +1,7 @@
 module PolicyOcr
 
     #yes I should change this name
-    def do_the_thing(textytext)
+    def self.make_numbers(textytext)
         #this gives me an array of each line as as a string
         file_data = File.read(textytext).split
 
