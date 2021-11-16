@@ -36,7 +36,8 @@ module PolicyOcr
                     when " _ |_ |_|" then "6"
                     when " _   |  |" then "7"
                     when " _ |_||_|" then "8"
-                    else "9"
+                    when " _ |_| _|" then "9"
+                    else "?"
                 end
                 
                 # Repeat with other 8 “chunks” by moving over by 3

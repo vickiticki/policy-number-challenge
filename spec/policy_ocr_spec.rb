@@ -13,11 +13,11 @@ describe PolicyOcr do
     context "given 'sample'" do
       it "makes policies" do
         arr = [
-                000000000, 111111111, 222222222, 333333333,
-                444444444, 555555555, 666666666, 777777777,
-                888888888, 999999999, 123456789
+                "000000000", "111111111", "222222222", "333333333",
+                "444444444", "555555555", "666666666", "777777777",
+                "888888888", "999999999", "123456789"
               ]
-        expect(PolicyOcr.make_numbers('spec/fixtures/sample.txt')).to eq(arr)
+        expect(PolicyOcr.make_numbers('spec/fixtures/sample.txt')).to eq(arr.map(&:to_i))
       end
     end
   end
@@ -26,9 +26,9 @@ describe PolicyOcr do
     context "given 'sample'" do
       it "makes policies" do
         arr = [
-                123456789, 987654321, 811715908, 177607040
+                "123456789", "987654321", "811715908", "177607040"
               ]
-        expect(PolicyOcr.make_numbers('spec/fixtures/tests.txt')).to eq(arr)
+        expect(PolicyOcr.make_numbers('spec/fixtures/tests.txt')).to eq(arr.map(&:to_i))
       end
     end
   end
